@@ -124,3 +124,5 @@ FROM employeedetails;
 
 SELECT COUNT(*), SUM(salary), AVG(salary), MAX(salary), MIN(salary)
 FROM employeedetails;
+
+
