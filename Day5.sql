@@ -226,3 +226,7 @@ e.salary AS salary
 FROM employee e
 INNER JOIN employee m
 ON e.manager_id = m.id;
+
+
+
+DESC employee;

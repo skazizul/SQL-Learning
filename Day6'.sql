@@ -16,8 +16,18 @@ INSERT INTO employee VALUES
 (6,"aziz5",23000),
 (7,"aziz6",20000),
 (8,"aziz7",20000);
+SELECT*FROM employee;
 
 
+DELIMITER //
+
+CREATE PROCEDURE getEmployee()
+BEGIN
+    SELECT * FROM employee;
+END //
+
+DELIMITER ;
+CALL getEmployee();
 CREATE INDEX index_name
 ON employee(name);
 
