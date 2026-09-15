@@ -27,6 +27,13 @@ WHERE id = 1;
 UPDATE employee
 SET department = 'IT'
 WHERE id = 2;
+CREATE INDEX idx_employee_department
+ON employee(department);
+EXPLAIN
+SELECT *
+FROM employee
+WHERE department = 'IT';
+
 
 UPDATE employee
 SET department = 'MANAGER'
