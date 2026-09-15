@@ -19,14 +19,68 @@ INSERT INTO employee VALUES
 SELECT*FROM employee;
 
 
+ALTER TABLE employee
+ADD manager_id INT;
+
+UPDATE employee 
+SET manager_id = 1
+WHERE id = 1;
+
+UPDATE employee 
+SET manager_id = 2
+WHERE id = 4;
+
+UPDATE employee 
+SET manager_id = 3
+WHERE id = 6;
+
+UPDATE employee 
+SET manager_id = 4
+WHERE id = 9;
+
 DELIMITER //
 
 CREATE PROCEDURE getEmployee()
 BEGIN
     SELECT * FROM employee;
 END //
-
 DELIMITER ;
+
+
+
+DELIMITER //
+CREATE PROCEDURE getEmployeeByid(IN empid INT)
+BEGIN
+SELECT * FROM employee WHERE id = empid;
+END //
+DELIMITER;
+
+
+DELIMITER //
+CREATE PROCEDURE getSalary(IN empId INT, OUT empSalary INT)
+BEGIN
+SELECT salary INTO empSalary
+FROM employee
+WHERE id = empId;
+END //
+DELIMITER;
+
+CALL getSalary(4,@salary);
+SELECT @salary;
+
+
+DELIMITER //
+CREATE PROCEDURE getName(IN empId INT, OUT empName VARCHAR(50))
+BEGIN 
+SELECT name INTO empName
+FROM employee
+WHERE id = empId;
+END //
+DELIMITER;
+
+CALL getName(4,@name);
+SELECT @name;
+
 CALL getEmployee();
 CREATE INDEX index_name
 ON employee(name);
